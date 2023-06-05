@@ -1,14 +1,10 @@
 package br.ufrn.healthy.measures.http.impl;
 
+import br.ufrn.healthy.measures.domain.ActiveLevel;
+import br.ufrn.healthy.measures.domain.Gender;
 import br.ufrn.healthy.measures.domain.HealthyType;
 import br.ufrn.healthy.measures.domain.WaistHipRatioLevel;
 import br.ufrn.healthy.measures.http.BodyController;
-import br.ufrn.healthy.measures.http.data.request.ActiveLevelRequest;
-import br.ufrn.healthy.measures.http.data.request.BasalMetabolicRateRequest;
-import br.ufrn.healthy.measures.http.data.request.BodyMassIndexRequest;
-import br.ufrn.healthy.measures.http.data.request.FatRateRequest;
-import br.ufrn.healthy.measures.http.data.request.LeanMassRequest;
-import br.ufrn.healthy.measures.http.data.request.WaistHipRatioRequest;
 import br.ufrn.healthy.measures.http.data.response.ActiveLevelResponse;
 import br.ufrn.healthy.measures.http.data.response.BasalMetabolicRateResponse;
 import br.ufrn.healthy.measures.http.data.response.BodyMassIndexResponse;
@@ -33,58 +29,48 @@ public class BodyControllerImpl implements BodyController {
 
   @Override
   @GetMapping("/body-mass-index")
-  public ResponseEntity<BodyMassIndexResponse> getBodyMassIndex(
-      BodyMassIndexRequest bodyMassIndexRequest) {
-    HealthyType healthyType = this.measuresService.calculateBodyMassIndex(
-        bodyMassIndexRequest.getWeight(),
-        bodyMassIndexRequest.getHeight());
+  public ResponseEntity<BodyMassIndexResponse> getBodyMassIndex(double weight, double height) {
+    HealthyType healthyType = this.measuresService.calculateBodyMassIndex(weight, height);
     return ResponseEntity.ok(new BodyMassIndexResponse(healthyType));
   }
 
   @Override
-  @GetMapping("basal-metabolic-rate")
-  public ResponseEntity<BasalMetabolicRateResponse> getBasalMetabolicRate(
-      BasalMetabolicRateRequest basalMetabolicRateRequest) {
-    double calories = this.measuresService.calculateBasalMetabolicRate(
-        basalMetabolicRateRequest.getGender(),
-        basalMetabolicRateRequest.getWeight(), basalMetabolicRateRequest.getHeight(),
-        basalMetabolicRateRequest.getAge());
+  @GetMapping("/basal-metabolic-rate")
+  public ResponseEntity<BasalMetabolicRateResponse> getBasalMetabolicRate(Gender gender,
+      double weight, double height, int age) {
+    double calories = this.measuresService.calculateBasalMetabolicRate(gender, weight, height, age);
     return ResponseEntity.ok(new BasalMetabolicRateResponse(calories));
   }
 
   @Override
-  @GetMapping("waist-hip-ratio")
-  public ResponseEntity<WaistHipRatioResponse> getWaistHipRatio(
-      WaistHipRatioRequest waistHipRatioRequest) {
-    WaistHipRatioLevel waistHipRatioLevel = this.measuresService.calculateWaistHipRatio(
-        waistHipRatioRequest.getGender(),
-        waistHipRatioRequest.getWaist(), waistHipRatioRequest.getHip());
+  @GetMapping("/waist-hip-ratio")
+  public ResponseEntity<WaistHipRatioResponse> getWaistHipRatio(Gender gender, double waist,
+      double hip) {
+    WaistHipRatioLevel waistHipRatioLevel =
+        this.measuresService.calculateWaistHipRatio(gender, waist, hip);
     return ResponseEntity.ok(new WaistHipRatioResponse(waistHipRatioLevel));
   }
 
   @Override
-  @GetMapping("fat-rate")
-  public ResponseEntity<FatRateResponse> getFatRate(FatRateRequest fatRateRequest) {
-    double fatRate = this.measuresService.calculateFatRate(fatRateRequest.getGender(),
-        fatRateRequest.getWeight(), fatRateRequest.getHeight());
+  @GetMapping("/fat-rate")
+  public ResponseEntity<FatRateResponse> getFatRate(Gender gender, double weight, double height) {
+    double fatRate = this.measuresService.calculateFatRate(gender, weight, height);
     return ResponseEntity.ok(new FatRateResponse(fatRate));
   }
 
   @Override
-  @GetMapping("lean-mass")
-  public ResponseEntity<LeanMassResponse> getLeanMass(LeanMassRequest leanMassRequest) {
-    double leanMass = this.measuresService.calculateLeanMass(leanMassRequest.getGender(),
-        leanMassRequest.getWeight(), leanMassRequest.getHeight());
+  @GetMapping("/lean-mass")
+  public ResponseEntity<LeanMassResponse> getLeanMass(Gender gender, double weight, double height) {
+    double leanMass = this.measuresService.calculateLeanMass(gender, weight, height);
     return ResponseEntity.ok(new LeanMassResponse(leanMass));
   }
 
   @Override
-  @GetMapping("active-level")
-  public ResponseEntity<ActiveLevelResponse> getActiveLevel(ActiveLevelRequest activeLevelRequest) {
-    double calories = this.measuresService.calculateBoostActiveLevel(
-        activeLevelRequest.getActiveLevel(),
-        activeLevelRequest.getGender(), activeLevelRequest.getWeight(),
-        activeLevelRequest.getHeight(), activeLevelRequest.getAge());
+  @GetMapping("/active-level")
+  public ResponseEntity<ActiveLevelResponse> getActiveLevel(ActiveLevel activeLevel, Gender gender,
+      double weight, double height, int age) {
+    double calories = this.measuresService.calculateBoostActiveLevel(activeLevel, gender, weight,
+        height, age);
     return ResponseEntity.ok(new ActiveLevelResponse(calories));
   }
 }
