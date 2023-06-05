@@ -1,4 +1,4 @@
-package br.ufrn.healthy.measures.http.exceptions;
+package br.ufrn.healthy.measures.exceptions;
 
 public class BadRequestException extends RuntimeException {
 

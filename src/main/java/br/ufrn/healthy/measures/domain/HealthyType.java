@@ -1,5 +1,8 @@
-package br.ufrn.healthy.measures.entities;
+package br.ufrn.healthy.measures.domain;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema
 public enum HealthyType {
   VERY_UNDERWEIGHT,
   UNDERWEIGHT,

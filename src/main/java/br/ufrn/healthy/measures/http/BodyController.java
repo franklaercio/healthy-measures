@@ -2,23 +2,23 @@ package br.ufrn.healthy.measures.http;
 
 import br.ufrn.healthy.measures.http.data.request.ActiveLevelRequest;
 import br.ufrn.healthy.measures.http.data.request.BasalMetabolicRateRequest;
+import br.ufrn.healthy.measures.http.data.request.BodyMassIndexRequest;
 import br.ufrn.healthy.measures.http.data.request.FatRateRequest;
 import br.ufrn.healthy.measures.http.data.request.LeanMassRequest;
 import br.ufrn.healthy.measures.http.data.request.WaistHipRatioRequest;
-import br.ufrn.healthy.measures.http.data.request.BodyMassIndexRequest;
 import br.ufrn.healthy.measures.http.data.response.ActiveLevelResponse;
 import br.ufrn.healthy.measures.http.data.response.BasalMetabolicRateResponse;
 import br.ufrn.healthy.measures.http.data.response.BodyMassIndexResponse;
 import br.ufrn.healthy.measures.http.data.response.FatRateResponse;
 import br.ufrn.healthy.measures.http.data.response.LeanMassResponse;
 import br.ufrn.healthy.measures.http.data.response.WaistHipRatioResponse;
-import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 
-@Api(tags = "Body")
+@Tag(name = "Body")
 public interface BodyController {
 
   @Operation(summary = "Calculate body mass index")
