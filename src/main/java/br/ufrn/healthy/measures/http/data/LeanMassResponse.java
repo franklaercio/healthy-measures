@@ -1,12 +1,14 @@
-package br.ufrn.healthy.measures.http.data.response;
+package br.ufrn.healthy.measures.http.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class LeanMassResponse {
 
-  @Schema(description = "Lean mass", example = "70.0")
+  @Schema(description = "Lean mass in kilograms", example = "70.0")
+  @JsonProperty("lean_mass")
   private double leanMass;
 
   public LeanMassResponse(double leanMass) {

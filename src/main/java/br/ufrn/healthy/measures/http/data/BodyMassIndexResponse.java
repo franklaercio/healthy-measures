@@ -1,13 +1,15 @@
-package br.ufrn.healthy.measures.http.data.response;
+package br.ufrn.healthy.measures.http.data;
 
 import br.ufrn.healthy.measures.domain.HealthyType;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BodyMassIndexResponse {
 
-  @Schema(description = "Healthy type", example = "NORMAL")
+  @JsonProperty("healthy_type")
+  @Schema(description = "Healthy type calculate by weight and height", example = "NORMAL")
   private HealthyType healthyType;
 
   public BodyMassIndexResponse(HealthyType healthyType) {

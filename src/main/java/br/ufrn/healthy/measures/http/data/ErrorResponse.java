@@ -1,9 +1,15 @@
-package br.ufrn.healthy.measures.http.data.response;
+package br.ufrn.healthy.measures.http.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ErrorResponse {
 
+  @Schema(description = "Error code", example = "400")
   private int code;
 
+  @Schema(description = "Error message", example = "Invalid request")
   private String message;
 
   public ErrorResponse(int code, String message) {

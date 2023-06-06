@@ -1,4 +1,4 @@
-package br.ufrn.healthy.measures.http.data.response;
+package br.ufrn.healthy.measures.http.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -6,7 +6,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ActiveLevelResponse {
 
-  @Schema(description = "Calories", example = "5000")
+  @Schema(description = "Calories calculated based on metabolism", example = "5000")
   private double calories;
 
   public ActiveLevelResponse(double calories) {

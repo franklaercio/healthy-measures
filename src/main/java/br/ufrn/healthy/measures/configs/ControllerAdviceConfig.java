@@ -1,31 +1,30 @@
-package br.ufrn.healthy.measures.http.impl;
+package br.ufrn.healthy.measures.configs;
 
-import br.ufrn.healthy.measures.http.ExceptionController;
-import br.ufrn.healthy.measures.http.data.response.ErrorResponse;
+import br.ufrn.healthy.measures.http.data.ErrorResponse;
 import br.ufrn.healthy.measures.exceptions.BadRequestException;
 import br.ufrn.healthy.measures.exceptions.InternalServerErrorException;
 import br.ufrn.healthy.measures.exceptions.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
-public class ExceptionControllerImpl implements ExceptionController {
+public class ControllerAdviceConfig {
 
-  @Override
-  public ResponseEntity<ErrorResponse> badRequestException(
-      BadRequestException badRequestException) {
+  @ExceptionHandler(BadRequestException.class)
+  public ResponseEntity<ErrorResponse> badRequestException(BadRequestException badRequestException) {
     return new ResponseEntity<>(new ErrorResponse(
         HttpStatus.BAD_REQUEST.value(), badRequestException.getMessage()), HttpStatus.BAD_REQUEST);
   }
 
-  @Override
+  @ExceptionHandler(NotFoundException.class)
   public ResponseEntity<ErrorResponse> notFoundException(NotFoundException notFoundException) {
     return new ResponseEntity<>(new ErrorResponse(
         HttpStatus.NOT_FOUND.value(), notFoundException.getMessage()), HttpStatus.NOT_FOUND);
   }
 
-  @Override
+  @ExceptionHandler(InternalServerErrorException.class)
   public ResponseEntity<ErrorResponse> internalServerErrorException(
       InternalServerErrorException internalServerErrorException) {
     return new ResponseEntity<>(

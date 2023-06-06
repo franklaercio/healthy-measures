@@ -6,7 +6,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 public enum ActiveLevel {
   SEDENTARY, LIGHTLY_ACTIVE, MODERATELY_ACTIVE, VERY_ACTIVE, EXTRA_ACTIVE;
 
-  public static boolean contains(ActiveLevel value) {
+  public static boolean exist(ActiveLevel value) {
     for (ActiveLevel activeLevel : ActiveLevel.values()) {
       if (activeLevel.equals(value)) {
         return true;
