@@ -46,7 +46,12 @@
 			<artifactId>logbook-spring-boot-starter</artifactId>
 			<version>2.14.0</version>
 		</dependency>
-
+		<dependency>
+			<groupId>net.minidev</groupId>
+			<artifactId>json-smart</artifactId>
+			<version>2.4.10</version>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.zalando</groupId>
 			<artifactId>logbook-json</artifactId>
