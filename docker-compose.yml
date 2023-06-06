@@ -1,0 +1,9 @@
+version: "3.7"
+
+services:
+  api:
+    container_name: api--healthy-measures
+    image: api--healthy-measures
+    build: .
+    ports:
+      - "8080:8080"
