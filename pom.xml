@@ -10,10 +10,9 @@
 	</parent>
 
 	<groupId>br.ufrn</groupId>
-	<artifactId>healthy-measures</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>api--healthy-measures</artifactId>
+	<version>1.0.0</version>
 	<name>healthy-measures</name>
-	<description>Project to get measures about your life style</description>
 
 	<properties>
 		<java.version>17</java.version>
