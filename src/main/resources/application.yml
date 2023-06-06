@@ -1,7 +1,7 @@
 server:
   port: ${EXPOSED_PORT_APP:8080}
   servlet:
-    context-path: /healthy-measures
+    context-path: /
 
 springdoc:
-  swagger-ui.path: /swagger-ui.html
+  swagger-ui.path: /
