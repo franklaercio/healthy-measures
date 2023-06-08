@@ -33,6 +33,6 @@ public class WaistHipRatioService {
   }
 
   private WaistHipRatioLevel calculateRiskLevel(double waist, double hip, double riskLevel) {
-    return waist / hip < riskLevel ? WaistHipRatioLevel.LOW_RISK : WaistHipRatioLevel.HIGH_RISK;
+    return waist / hip <= riskLevel ? WaistHipRatioLevel.LOW_RISK : WaistHipRatioLevel.HIGH_RISK;
   }
 }

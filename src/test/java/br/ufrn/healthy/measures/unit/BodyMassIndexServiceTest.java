@@ -29,10 +29,15 @@ public class BodyMassIndexServiceTest {
   private static Stream<Arguments> dataBodyMassIndex() {
     return Stream.of(
         Arguments.of(50.0, 1.80, HealthyType.VERY_UNDERWEIGHT),
+        Arguments.of(51.84, 1.80, HealthyType.UNDERWEIGHT),
         Arguments.of(55.0, 1.80, HealthyType.UNDERWEIGHT),
+        Arguments.of(41.625, 1.50, HealthyType.NORMAL),
         Arguments.of(75.0, 1.80, HealthyType.NORMAL),
+        Arguments.of(81.0, 1.80, HealthyType.OVERWEIGHT),
         Arguments.of(90.0, 1.80, HealthyType.OVERWEIGHT),
+        Arguments.of(97.2, 1.80, HealthyType.OBESE_CLASS_I),
         Arguments.of(100, 1.80, HealthyType.OBESE_CLASS_I),
+        Arguments.of(78.75, 1.50, HealthyType.OBESE_CLASS_II),
         Arguments.of(120, 1.80, HealthyType.OBESE_CLASS_II),
         Arguments.of(150, 1.80, HealthyType.OBESE_CLASS_III)
     );
